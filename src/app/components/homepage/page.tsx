@@ -106,14 +106,15 @@ const HeroSection = () => {
       <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 md:mb-6 leading-tight">
       Everything You Need For Your Building,<br /> All in One Place
         </h1>
-          <button className="bg-transparent text-white border-2 border-[#F8B612] px-3 sm:px-4 md:px-6 lg:px-8 py-1 sm:py-2 md:py-3 font-bold rounded-full transition duration-300 ease-in-out hover:bg-[#F8B612] hover:text-[#263C5A] mt-2 sm:mt-4">
+          <button className="bg-transparent text-white border-2 border-[#F8B612] px-3 sm:px-4 md:px-6 lg:px-8 py-1 sm:py-2 md:py-3 font-bold rounded-full transition duration-300 ease-in-out hover:bg-[#F8B612] hover:text-[#263C5A] mt-2 sm:mt-4"
+            onClick={() => router.push('/category')}>
             Shop Now
           </button>
         </div>
 
         <div className="md:w-1/2 mt-4 md:mt-0">
           <Image
-            src="/images/image (13).png"
+            src="/images/image (7).png"
             alt="Building Materials"
             width={700}
             height={280}
@@ -140,7 +141,8 @@ const HeroSection = () => {
           className="rounded-lg mb-3 sm:mb-4"
         />
         <div className="mt-auto"> 
-          <button className="bg-transparent text-white border-2 border-[#F8B612] px-3 sm:px-4 py-1 sm:py-2 font-bold rounded-full transition duration-300 ease-in-out hover:bg-[#F8B612] hover:text-[#263C5A]">
+          <button className="bg-transparent text-white border-2 border-[#F8B612] px-3 sm:px-4 py-1 sm:py-2 font-bold rounded-full transition duration-300 ease-in-out hover:bg-[#F8B612] hover:text-[#263C5A]"
+          onClick={() => router.push('/category')}>
             Shop Now
           </button>
         </div>

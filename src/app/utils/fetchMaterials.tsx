@@ -1,5 +1,5 @@
 // utils/fetchMaterials.js
-const baseURL = process.env.BASE_URL || "http://localhost:3001"; 
+const baseURL = process.env.BASE_URL || "http://localhost:3000"; 
 
 export const fetchMaterials = async () => {
     try {
