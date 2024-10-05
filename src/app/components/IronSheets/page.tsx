@@ -185,7 +185,7 @@ import { MaterialData } from '@/app/utils/types';
 import Sidebar from '@/app/components/Sidebar'; 
 import Layout from '../Layout'; 
 import Navbar from '@/app/components/Navbar'; // Import Navbar
-
+import Image from 'next/image';
 const Sheet = () => {
   const { materials, loading } = useMaterials(); 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null); 
@@ -196,7 +196,12 @@ const Sheet = () => {
     return cartItems ? JSON.parse(cartItems) : [];
   };
 
-  const [cartItems, setCartItems] = useState<any[]>(getCartItems());
+  const [cartItems, setCartItems] = useState<{
+    id: number;
+    name: string;
+    price: number;
+    quantity: number;
+  }[]>(getCartItems()); // Specify the type directly here
 
   // Update local storage whenever cart items change
   useEffect(() => {
@@ -219,22 +224,22 @@ const Sheet = () => {
   };
 
   const handleAddToCart = (material: MaterialData) => {
-    const existingItem = cartItems.find((item) => item.material_id === material.material_id);
+    const existingItem = cartItems.find((item) => item.id === material.material_id);
     if (existingItem) {
       setCartItems((prevItems) =>
         prevItems.map((item) =>
-          item.material_id === material.material_id
+          item.id === material.material_id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         )
       );
     } else {
-      setCartItems((prevItems) => [...prevItems, { ...material, quantity: 1 }]);
+      setCartItems((prevItems) => [...prevItems, { id: material.material_id, name: material.material_name, price: material.price, quantity: 1 }]);
     }
     alert(`${material.material_name} has been added to your cart!`);
   };
 
-  const placeholderImage = '/images/sheets.jpg'; 
+  const placeholderImage = '/images/sheets.jpg';
 
   return (
     <Layout>
@@ -252,7 +257,7 @@ const Sheet = () => {
                   key={material.material_id} 
                   className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col cursor-pointer"
                 >
-                  <img
+                  <Image
                     src={material.image || placeholderImage}
                     alt={material.material_name} 
                     className="w-full h-32 sm:h-40 object-contain mb-4"

@@ -5,6 +5,7 @@ import { useMaterials } from '../../hooks/useMaterials';
 import { MaterialData } from '@/app/utils/types';
 import Sidebar from '@/app/components/Sidebar'; 
 import Layout from '../Layout'; 
+import Image from 'next/image';
 
 const Wood = () => {
   const { materials, loading } = useMaterials(); 
@@ -50,7 +51,7 @@ const Wood = () => {
                   key={material.material_id} 
                   className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col cursor-pointer"
                 >
-                  <img
+                  <Image
                     src={material.image || placeholderImage}
                     alt={material.material_name} 
                     className="w-full h-32 sm:h-40 object-contain mb-4"
