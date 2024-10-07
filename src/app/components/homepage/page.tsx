@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FiBell, FiShoppingCart } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
 import { useGetMaterials } from '@/app/hooks/useGetMaterials'; 
+import Link from 'next/link';
 
 const HeroSection = () => {
   const router = useRouter();
@@ -113,7 +114,7 @@ const HeroSection = () => {
         </div>
 
         <div className="md:w-1/2 mt-4 md:mt-0">
-          <Image
+          <img
             src="/images/image (7).png"
             alt="Building Materials"
             width={700}
@@ -140,12 +141,14 @@ const HeroSection = () => {
           height={120}
           className="rounded-lg mb-3 sm:mb-4"
         />
-        <div className="mt-auto"> 
-          <button className="bg-transparent text-white border-2 border-[#F8B612] px-3 sm:px-4 py-1 sm:py-2 font-bold rounded-full transition duration-300 ease-in-out hover:bg-[#F8B612] hover:text-[#263C5A]"
-          onClick={() => router.push('/category')}>
-            Shop Now
-          </button>
-        </div>
+       <div className="mt-auto"> 
+  <Link href="/components/category">
+    <button className="bg-transparent text-white border-2 border-[#F8B612] px-3 sm:px-4 py-1 sm:py-2 font-bold rounded-full transition duration-300 ease-in-out hover:bg-[#F8B612] hover:text-[#263C5A]">
+      Shop Now
+    </button>
+  </Link>
+</div>
+
       </div>
     ))}
   </div>

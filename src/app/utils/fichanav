@@ -1,0 +1,113 @@
+// "use client"
+// import Image from 'next/image';
+// import React, { useEffect, useState } from 'react';
+// import { MdOutlineShoppingCart } from 'react-icons/md';
+// import Link from 'next/link';
+// import { MaterialData } from '@/app/utils/types';
+
+// interface NavbarProps {
+//   itemCount: number;
+//   cart?: MaterialData[]; // Make cartItems optional
+// }
+
+// const Navbar: React.FC<NavbarProps> = ({ itemCount, cart = [] }) => {
+//   const [storedCartItems, setStoredCartItems] = useState<MaterialData[]>([]); // State to hold cart items
+
+//   useEffect(() => {
+//     // Retrieve cart items from local storage when the component mounts
+//     const storedItems = localStorage.getItem('cart');
+//     if (storedItems) {
+//       try {
+//         const parsedItems = JSON.parse(storedItems);
+//         if (Array.isArray(parsedItems)) {
+//           console.log('Retrieved cart items:', parsedItems); // Log retrieved items
+//           setStoredCartItems(parsedItems); // Set state with retrieved items
+//         }
+//       } catch (error) {
+//         console.error('Error parsing cart items from local storage:', error);
+//         localStorage.removeItem('cart'); // Clear invalid data
+//       }
+//     }
+//   }, []);
+
+//   // Store cart items in local storage when storedCartItems state changes
+//   useEffect(() => {
+//     localStorage.setItem('cart', JSON.stringify(storedCartItems));
+//   }, [storedCartItems]);
+
+//   // Function to handle adding an item to the cart
+//   const handleAddToCart = (newItem: MaterialData) => {
+//     // Check if item already exists in the cart
+//     const existingItemIndex = storedCartItems.findIndex(item => item.material_id === newItem.material_id);
+    
+//     if (existingItemIndex !== -1) {
+//       // If the item exists, update the quantity
+//       const updatedItems = [...storedCartItems];
+//       updatedItems[existingItemIndex].quantity += newItem.quantity; // Update quantity
+//       setStoredCartItems(updatedItems); // Update state
+//     } else {
+//       // If the item does not exist, add it to the cart
+//       setStoredCartItems(prevItems => [...prevItems, newItem]);
+//     }
+
+//     console.log('Added to cart:', newItem); // Debug log
+//   };
+
+//   return (
+//     <nav className="flex flex-row justify-between items-center w-full p-4 bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+//       <div className="flex items-center px-6">
+//         <Image
+//           src="/images/bmLogo.png"
+//           alt="BuildMart Logo"
+//           width={150}
+//           height={50}
+//           className="w-[150px] sm:w-[200px]"
+//         />
+//       </div>
+//       <div className="flex items-center w-full max-w-md bg-transparent border border-[#F8B612] rounded-full overflow-hidden">
+//         <input
+//           type="text"
+//           placeholder="What are you looking for?"
+//           className="bg-transparent focus:outline-none px-4 py-2 w-full text-black"
+//         />
+//         <button className="bg-[#F8B612] px-8 sm:px-8 py-2 text-white font-semibold rounded-full">
+//           Search
+//         </button>
+//       </div>
+//       <div className="relative">
+//         <Link href="/components/Pages">
+//           <span className="cursor-pointer">
+//             <MdOutlineShoppingCart 
+//               className="text-[#263C5A]" 
+//               size={35} 
+//             />
+//           </span>
+//         </Link>
+//         {itemCount > 0 && (
+//           <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full px-1">
+//             {itemCount}
+//           </span>
+//         )}
+//         {/* Display cart items */}
+//         <div className="absolute top-full right-0 mt-2 w-48 bg-white border border-gray-300 shadow-lg rounded-lg p-2 z-10">
+//           {storedCartItems.length > 0 ? (
+//             <ul>
+//               {storedCartItems.map((item) => (
+//                 <li key={item.material_id} className="flex justify-between items-center">
+//                   <span>{item.material_name}</span>
+//                   <span>{item.quantity}</span>
+//                   <span>{item.brand_name}</span>
+
+//                 </li>
+//               ))}
+//             </ul>
+//           ) : (
+//             <p className="text-center text-gray-500">No items in cart</p>
+//           )}
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
